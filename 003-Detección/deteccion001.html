@@ -28,18 +28,18 @@
             //El paso es cada cuandots pixeles voy a realizar una comparación
             const paso = 16;
             //Creo un contenedor para los pixeles del fotograma anterior
-            var pixelesviejos = []
+            var pixelesviejos = [];
             //Creo un contenedor para los pixeles del ultimo fotograma
-            var pixelesnuevos = []
+            var pixelesnuevos = [];
 
             navigator.mediaDevices.getUserMedia({video:true})
             .then(function(flujo) {
                 video.scrObject = flujo;
             })
             .catch(function(error) {
-                console.log("Error: " + error)
-        })
-        function videoALienzo(){
+                console.log("Error: " +error)
+            })
+            function videoALienzo(){
             cuadrosx=[]
             cuadrosy=[]
 
@@ -73,10 +73,10 @@
                 }
             }
     
-        //Si estoy en la segunda iteracion    
-        if (contador > 0){
+            //Si estoy en la segunda iteracion    
+            if (contador > 0){
             //Repaso el array y tomo los valores nuevos y antiguos
-                for(let i = 0; i<pixelesnuevos.length;1++){
+                for(let i = 0; i<pixelesnuevos.length;i++){
                     let rojonuevo = pixelesnuevos[i].data[0]
                     let rojoviejo = pixelesviejos[i].data[0]
                     let verdenuevo = pixelesnuevos[i].data[1]
@@ -97,14 +97,14 @@
                             paso,
                             paso)
                             //console.log(cuadrosx[pixelesnuevos[i].x])
-                            if(typeof(cuadrosx[pixelesnuevos[i].x]) 'undefined'){
+                            if(typeof(cuadrosx[pixelesnuevos[i].x]) == 'undefined'){
                                 cuadrosx [pixelesnuevos[i].x] = 1 
 
 
                             }else{
                                 cuadrosx[pixelesnuevos[i].x]++ 
                             }
-                            if(cuadrosy[pixelesnuevos[i].y] 'undefined'){
+                            if(cuadrosy[pixelesnuevos[i].y] == 'undefined'){
                                 cuadrosy[pixelesnuevos[i].y] = 1 
 
 
