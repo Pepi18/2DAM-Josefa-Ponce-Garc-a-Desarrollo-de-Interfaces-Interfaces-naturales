@@ -174,13 +174,41 @@
                     contexto2.stroke()
 
                     //Dibujo un circulo de atencion
-                    contexto2.fillStyle = "red"
-                    contexto2.beginPath()
-                    contexto2.arc(
-                        sumax,
-                        sumay,
-                        14,0,Math.PI*2,true)
-                    contexto2.fill()
+                    if(sumax <=419 && sumay <=319){
+                        contexto2.fillStyle = "red"
+                        contexto2.beginPath()
+                        contexto2.arc(
+                            sumax,
+                            sumay,
+                            14,0,Math.PI*2,true)
+                        contexto2.fill()
+                    }else if(sumax > 419 && sumax<=839 && sumay <=319){
+                        contexto2.fillStyle = "blue"
+                        contexto2.beginPath()
+                        contexto2.arc(
+                            sumax,
+                            sumay,
+                            14,0,Math.PI*2,true)
+                        contexto2.fill()
+                    }else if(sumax <= 419 && sumay>319 && sumay <=639){
+                        contexto2.fillStyle = "green"
+                        contexto2.beginPath()
+                        contexto2.arc(
+                            sumax,
+                            sumay,
+                            14,0,Math.PI*2,true)
+                        contexto2.fill()
+                    }else if(sumax > 419 && sumax<=839 && sumay >319 && sumay<=639){
+                        contexto2.fillStyle = "purple"
+                        contexto2.beginPath()
+                        contexto2.arc(
+                            sumax,
+                            sumay,
+                            14,0,Math.PI*2,true)
+                        contexto2.fill()
+                    }
+                    
+                    
                 }
                 contador ++;
                 requestAnimationFrame(videoALienzo)
