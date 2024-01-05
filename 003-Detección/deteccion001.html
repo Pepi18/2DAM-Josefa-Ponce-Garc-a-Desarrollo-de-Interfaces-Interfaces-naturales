@@ -6,7 +6,7 @@
             html,body{background-color: black;}
             video{display: none;}
             canvas{position: absolute;top:0px;left: 0px;}
-            #lienzo{opacity: 0.5;}
+            #lienzo2{opacity: 0.5;}
         </style>
     </head>
     <body>
@@ -15,11 +15,13 @@
         <video id="video" autoplay></video>
         <script>
             //Declaro las variables iniciales
-            const vide = document.getElementById("video");
+            const video = document.getElementById("video");
             const lienzo = document.getElementById("lienzo");
             const lienzo2 = document.getElementById("lienzo2");
             const contexto = lienzo.getContext("2d");
             const contexto2 = lienzo2.getContext("2d");
+            contexto.willReadFrequently = true;
+            contexto2.willReadFrequently = true;
             contexto2.fillStyle = "rgba(255,255,255,0.01)"
             var cuadrosx = []
             var cuadrosy = []
@@ -31,10 +33,10 @@
             var pixelesviejos = [];
             //Creo un contenedor para los pixeles del ultimo fotograma
             var pixelesnuevos = [];
-
+            var contador = 0;
             navigator.mediaDevices.getUserMedia({video:true})
             .then(function(flujo) {
-                video.scrObject = flujo;
+                video.srcObject = flujo;
             })
             .catch(function(error) {
                 console.log("Error: " +error)
@@ -44,8 +46,8 @@
             cuadrosy=[]
 
             //Creo una capa semitransparente
-            contexto2.fillStyle = "rgba(255,255,255,0.01)"
-            contexto.fillRect(0,0,640,480)            
+            contexto.fillRect(0,0,640,480)
+            contexto2.clearRect(0,0,640,480);            
             //En el canvas pego el video
             contexto.drawImage(
                 video,
@@ -72,7 +74,7 @@
 
                 }
             }
-    
+            
             //Si estoy en la segunda iteracion    
             if (contador > 0){
             //Repaso el array y tomo los valores nuevos y antiguos
@@ -138,7 +140,7 @@
             });
             if(maxx != 0){
                 atencionx.push(maxx);
-                antenciony.push(maxy);
+                atenciony.push(maxy);
                 if(atencionx.length > 10){
                     atencionx.splice(0,1)
                     atenciony.splice(0,1)
